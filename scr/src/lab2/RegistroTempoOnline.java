@@ -22,5 +22,7 @@ public class RegistroTempoOnline {
             return false;
         }
     }
+    public String toString() {
+    }
 
 }

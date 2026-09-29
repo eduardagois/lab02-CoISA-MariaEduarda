@@ -16,5 +16,6 @@ public class Descanso {
         } else {
             return "cansado";
         }
+
     }
 }
