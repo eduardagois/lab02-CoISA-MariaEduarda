@@ -8,6 +8,7 @@ public class RegistroTempoOnline {
     public RegistroTempoOnline(String nomeDisciplina) {
         nomeDisciplina = nomeDisciplina;
     }
+
     public RegistroTempoOnline(String nomeDisciplina, int tempoOnlineEsperado) {
         nomeDisciplina = nomeDisciplina;
         tempoOnlineEsperado = tempoOnlineEsperado;
@@ -23,6 +24,7 @@ public class RegistroTempoOnline {
         }
     }
     public String toString() {
+        return nomeDisciplina + " " + tempoInvestidoOnline + "/" + tempoOnlineEsperado;
     }
 
 }
