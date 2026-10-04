@@ -3,15 +3,16 @@ package lab2;
 public class RegistroTempoOnline {
     private String nomeDisciplina;
     private int tempoInvestidoOnline;
-    private int tempoOnlineEsperado;
+    private int tempoOnlineEsperado = 120;
 
-    public RegistroTempoOnline(String nomeDisciplina) {
-        nomeDisciplina = nomeDisciplina;
+    public RegistroTempoOnline(String nomeDisciplinanovo) {
+        nomeDisciplina = nomeDisciplinanovo;
     }
 
-    public RegistroTempoOnline(String nomeDisciplina, int tempoOnlineEsperado) {
-        nomeDisciplina = nomeDisciplina;
-        tempoOnlineEsperado = tempoOnlineEsperado;
+    public RegistroTempoOnline(String nomeDisciplinaNovo, int tempoOnlineEsperadoNovo) {
+        nomeDisciplina = nomeDisciplinaNovo;
+        tempoOnlineEsperado = tempoOnlineEsperadoNovo;
+
     }
     public void adicionaTempoOnline(int tempo) {
         tempoInvestidoOnline += tempo;
