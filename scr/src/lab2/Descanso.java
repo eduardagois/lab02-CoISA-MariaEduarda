@@ -5,10 +5,10 @@ public class Descanso {
     public int numeroDeSemanas;
 
     public void defineHorasDescanso(int valor) {
-        horasDeDescanso = valor;
+        this.horasDeDescanso = valor;
     }
     public void defineNumeroSemanas(int valor) {
-        numeroDeSemanas = valor;
+        this.numeroDeSemanas = valor;
     }
     public String getStatusGeral() {
         if (numeroDeSemanas > 0 && horasDeDescanso / numeroDeSemanas >= 26) {
