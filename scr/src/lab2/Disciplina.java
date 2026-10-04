@@ -6,11 +6,12 @@ public class Disciplina {
     private String nomeDisciplina;
     private int horas;
     private double[] notas;
+    private double valorMedia;
     private static final int QNT_NOTAS = 4;
     private static final double MEDIA = 7.0;
 
-    public Disciplina(String nomeDisciplina) {
-        this.nomeDisciplina = nomeDisciplina;
+    public Disciplina(String nomeDisciplinaNovo) {
+        nomeDisciplina = nomeDisciplinaNovo;
     }
 
     public void cadastraHoras(int horas) {
@@ -25,10 +26,10 @@ public class Disciplina {
         double soma = Arrays.stream(notas).sum();
         return soma / QNT_NOTAS;
     }
-    double mediaValor = media(double[] notas);
 
-    public boolean aprovado(double mediaValor) {
-        if (this.mediaValor >= MEDIA) {
+    public boolean aprovado() {
+        valorMedia = media(this.notas);
+        if (valorMedia >= MEDIA) {
             return true;
         }
         return false;
@@ -48,7 +49,7 @@ public class Disciplina {
     }
 
     public String toString() {
-        return nomeDisciplina + " " + media + " " + formaArray(notas);
+        return nomeDisciplina + " " + valorMedia + " " + formaArray(notas);
     }
 }
 
