@@ -1,16 +1,17 @@
 package lab2;
 
-import java.util.Arrays;
-
 public class Disciplina {
     private String nomeDisciplina;
     private int horas;
-    private double[] notas;
+    private double[] arrayNotas;
     private static final int QNT_NOTAS = 4;
     private static final double MEDIA = 7.0;
 
+
     public Disciplina(String nomeDisciplina) {
         this.nomeDisciplina = nomeDisciplina;
+        this.arrayNotas = new double[QNT_NOTAS];
+
     }
 
     public void cadastraHoras(int horas) {
@@ -18,17 +19,21 @@ public class Disciplina {
     }
 
     public void cadastraNota(int nota, double valorNota) {
-        this.notas[nota] = valorNota;
+        this.arrayNotas[nota-1] = valorNota;
     }
 
     public double media(double[] notas) {
-        double soma = Arrays.stream(notas).sum();
+        double soma = 0;
+        for (int i = 0; i < this.QNT_NOTAS; i++) {
+            soma += notas[i];
+        }
         return soma / QNT_NOTAS;
     }
-    double mediaValor = media(double[] notas);
 
-    public boolean aprovado(double mediaValor) {
-        if (this.mediaValor >= MEDIA) {
+
+    public boolean aprovado() {
+        double mediaValor = media(this.arrayNotas);
+        if (mediaValor >= MEDIA) {
             return true;
         }
         return false;
@@ -48,7 +53,7 @@ public class Disciplina {
     }
 
     public String toString() {
-        return nomeDisciplina + " " + media + " " + formaArray(notas);
+        return nomeDisciplina + " " + media(this.arrayNotas) + " " + formaArray(arrayNotas);
     }
 }
 
