@@ -27,7 +27,7 @@ public class Descanso {
 
     /** Retorna a String que representa o estado de descanso do aluno. Sendo calculada
      * pela divisão entre horas de descanso e numero de semanas, a qual deve ser maior
-     * ou igual a 26 para representar um descanso coerente.
+     * ou igual a 26 para representar um descanso suficiente.
      * @return o estado de descanso do aluno: "cansado" ou "descansado".
      */
     public String getStatusGeral() {
