@@ -11,25 +11,6 @@ public class RegistroResumos {
     // Conta a quantidade de resumos já armazenados.
     private int cont;
 
-    /** Representação de um resumo qualquer que tem
-     * um tema e um conteúdo associado.
-     */
-    public class Resumo {
-        // Atributo que guarda o tema do resumo.
-        private String tema;
-        // Atributo que guarda o conteúdo do resumo.
-        private String conteudo;
-
-        /** Constrói o resumo através de um tema
-         * e um conteúdo associados.
-         * @param tema
-         * @param conteudo
-         */
-        public Resumo(String tema, String conteudo) {
-            this.tema = tema;
-            this.conteudo = conteudo;
-        }
-    }
 
     /** Constrói o Array de resumos determinando
      * seu tamanho através de um valor inteiro.
@@ -63,7 +44,7 @@ public class RegistroResumos {
     public String[] pegaResumos() {
         String[] arrayResumos = new String[resumos.length];
         for (int i = 0; i < this.cont; i++) {
-            arrayResumos[i] = this.resumos[i].tema + ": " + this.resumos[i].conteudo;
+            arrayResumos[i] = resumos[i].toString();
         }
         return arrayResumos;
     }
@@ -78,16 +59,16 @@ public class RegistroResumos {
 
     /** Imprime os resumos cadastrados.
      *
-     * @return Uma String montada que mostra cada tema de resumo armazenado.
+     * @return Uma String que mostra cada tema de resumo armazenado.
      * */
     public String imprimeResumos() {
         System.out.println("- " + this.cont + " resumo(s) cadastrado(s)");
         String resumosImpressos = "";
         for (int i = 0; i < this.cont; i++) {
             if (i % 2 == 0) {
-                resumosImpressos += this.resumos[i].tema + " ";
+                resumosImpressos += resumos[i].getTema() + " ";
             } else {
-                resumosImpressos += "| " + this.resumos[i].tema + " ";
+                resumosImpressos += "| " + resumos[i].getTema() + " ";
             }
         }
         return resumosImpressos;
@@ -99,11 +80,12 @@ public class RegistroResumos {
      * @return Booleano que mostra se o resumo já existe no array ou não.
      */
     public boolean temResumo(String tema) {
-        for (int i = 0; i < this.cont; i++) {
-            if (tema.equals(this.resumos[i].tema)) {
+        for (int i = 0; i < cont; i++) {
+            if (tema.equals(resumos[i].getTema())) {
                 return true;
             }
         }
         return false;
     }
+
 }
