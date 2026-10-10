@@ -1,5 +1,7 @@
 package lab2;
 
+import java.util.Arrays;
+
 /** Representação de uma disciplina para fins de
  * controle de notas e aprovação do aluno.
  */
@@ -10,6 +12,8 @@ public class Disciplina {
     private int horas;
     // Array de notas que armazena as notas do aluno.
     private double[] arrayNotas;
+    //Array que contém os pesos de cada nota do aluno.
+    private int[] pesosNotas;
     // Constante responsável por determinar o tamanho do array.
     private static final int QNT_NOTAS = 4;
     /** Constante que representa o valor mínimo
@@ -25,6 +29,11 @@ public class Disciplina {
         this.nomeDisciplina = nomeDisciplina;
         this.arrayNotas = new double[QNT_NOTAS];
 
+    }
+    public Disciplina(String nomeDisciplina, int numDeNotas, int[] pesosNotas) {
+        this.nomeDisciplina = nomeDisciplina;
+        this.arrayNotas = new double[numDeNotas];
+        this.pesosNotas = pesosNotas;
     }
 
     /** Cadastra as horas dedicadas à disciplina.
@@ -44,17 +53,24 @@ public class Disciplina {
         this.arrayNotas[nota-1] = valorNota;
     }
 
-    /** Retorna o cálculo da média simples das notas
-     * do aluno.
+    /** Retorna o cálculo da média do aluno.
      * @param notas
-     * @return
+     * @return Double que representa a média do aluno
+     * sendo ponderada ou simples.
      */
     public double media(double[] notas) {
         double soma = 0;
-        for (int i = 0; i < this.QNT_NOTAS; i++) {
-            soma += notas[i];
+        if (pesosNotas == null) {
+            for (int i = 0; i < notas.length; i++) {
+                soma += notas[i];
+            }
+            return soma / QNT_NOTAS;
+        } else {
+            for (int i = 0; i < notas.length; i++) {
+                soma += (notas[i] * pesosNotas[i]);
+            }
+            return soma / Arrays.stream(pesosNotas).sum();
         }
-        return soma / QNT_NOTAS;
     }
 
     /** Verifica se, com base na média, aluno foi
@@ -70,30 +86,12 @@ public class Disciplina {
         return false;
     }
 
-    /** Monta uma String para representar textualmente
-     * o Array de notas do aluno.
-     * @param notas
-     * @return String que representa um Array de notas.
-     */
-    private String formaArray(double[] notas) {
-        String impressao = "[";
-        for (int i = 0; i < QNT_NOTAS; i++) {
-            impressao += notas[i];
-            if (i != 3) {
-                impressao += " ,";
-
-            }
-        }
-        impressao += "]";
-        return impressao;
-    }
-
     /** Representação textual de uma disciplina com base
      * no seu nome, média e notas.
      * @return String que representa a classe disciplina.
      */
     public String toString() {
-        return nomeDisciplina + " " + media(this.arrayNotas) + " " + formaArray(arrayNotas);
+        return nomeDisciplina + " " + media(this.arrayNotas) + " " + Arrays.toString(arrayNotas);
     }
 }
 
