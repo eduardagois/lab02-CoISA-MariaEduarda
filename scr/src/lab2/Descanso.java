@@ -1,7 +1,9 @@
 package lab2;
 
-/** Representação da rotina de Descanso de um aluno, o que o auxilia a acompanhar sua própria rotina de descanso.
+/** Representação da rotina de Descanso de um aluno, o que
+ * o auxilia a acompanhar sua própria rotina de descanso.
  *
+ * @author Maria Eduarda
  */
 public class Descanso {
     // Atributo que armazena as horas de descanso de um aluno durante um período de n semanas.

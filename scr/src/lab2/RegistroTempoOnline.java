@@ -5,6 +5,8 @@ package lab2;
  * determinada disciplina. Por padrão, caso não seja definido
  * o tempo online esperado, o aluno deve dedicar 120 horas
  * online para uma disciplina de 60 horas de carga horária.
+ *
+ * @author Maria Eduarda
  */
 public class RegistroTempoOnline {
     // Guarda o nome de uma disciplina.
@@ -15,11 +17,11 @@ public class RegistroTempoOnline {
     private int tempoOnlineEsperado;
 
     /** Constrói o registro de tempo online com base no
-     * nome da disciplina e no tempo online esperado padrão
+     * nome da disciplina e no tempo online esperado padrão.
      * @param nomeDisciplinanovo
      */
-    public RegistroTempoOnline(String nomeDisciplinanovo) {
-        this.nomeDisciplina = nomeDisciplinanovo;
+    public RegistroTempoOnline(String nomeDisciplinaNovo) {
+        this.nomeDisciplina = nomeDisciplinaNovo;
         this.tempoOnlineEsperado = 120;
     }
 

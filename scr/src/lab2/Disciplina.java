@@ -4,15 +4,18 @@ import java.util.Arrays;
 
 /** Representação de uma disciplina para fins de
  * controle de notas e aprovação do aluno.
+ *
+ * @author Maria Eduarda
  */
+
 public class Disciplina {
     // Nome da disciplina.
     private String nomeDisciplina;
     // Armazena a quantidade de horas dedicadas à disciplina.
-    private int horas;
+    private int horasDeEstudo;
     // Array de notas que armazena as notas do aluno.
     private double[] arrayNotas;
-    //Array que contém os pesos de cada nota do aluno.
+    // Array que contém os pesos de cada nota do aluno.
     private int[] pesosNotas;
     // Constante responsável por determinar o tamanho do array.
     private static final int QNT_NOTAS = 4;
@@ -28,8 +31,16 @@ public class Disciplina {
     public Disciplina(String nomeDisciplina) {
         this.nomeDisciplina = nomeDisciplina;
         this.arrayNotas = new double[QNT_NOTAS];
+        this.horasDeEstudo = 0;
 
     }
+
+    /** Constrói a disciplina através do seu nome, quantidade
+     * de notas e um array dos pesos das notas
+     * @param nomeDisciplina
+     * @param numDeNotas
+     * @param pesosNotas
+     */
     public Disciplina(String nomeDisciplina, int numDeNotas, int[] pesosNotas) {
         this.nomeDisciplina = nomeDisciplina;
         this.arrayNotas = new double[numDeNotas];
@@ -41,7 +52,7 @@ public class Disciplina {
      * @param horas
      */
     public void cadastraHoras(int horas) {
-        this.horas = horas;
+        this.horasDeEstudo += horas;
     }
 
     /** Cadastra as notas do aluno com base no seu
@@ -58,13 +69,13 @@ public class Disciplina {
      * @return Double que representa a média do aluno
      * sendo ponderada ou simples.
      */
-    public double media(double[] notas) {
+    private double media(double[] notas) {
         double soma = 0;
         if (pesosNotas == null) {
             for (int i = 0; i < notas.length; i++) {
                 soma += notas[i];
             }
-            return soma / QNT_NOTAS;
+            return soma / notas.length;
         } else {
             for (int i = 0; i < notas.length; i++) {
                 soma += (notas[i] * pesosNotas[i]);
@@ -76,7 +87,7 @@ public class Disciplina {
     /** Verifica se, com base na média, aluno foi
      * aprovado na disciplina.
      * @return valor booleano para representar
-     * se o aluno foi aprovado na disciplina, ou não.
+     * se o aluno foi aprovado na disciplina ou não.
      */
     public boolean aprovado() {
         double mediaValor = media(this.arrayNotas);
@@ -91,7 +102,7 @@ public class Disciplina {
      * @return String que representa a classe disciplina.
      */
     public String toString() {
-        return nomeDisciplina + " " + media(this.arrayNotas) + " " + Arrays.toString(arrayNotas);
+        return nomeDisciplina + " " +  this.horasDeEstudo + " " + media(this.arrayNotas) + " " + Arrays.toString(arrayNotas);
     }
 }
 

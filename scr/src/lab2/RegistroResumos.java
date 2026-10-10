@@ -3,8 +3,10 @@ package lab2;
 import java.util.Arrays;
 import java.util.Locale;
 
-/** Representação para armazenamento de resumos
+/** Representação do armazenamento de resumos
  * sobre temas diversos.
+ *
+ * @author Maria Eduarda
  */
 public class RegistroResumos {
     //Array de resumos que guarda os objetos da classe resumo.
@@ -35,15 +37,17 @@ public class RegistroResumos {
      */
     public void adiciona(String tema, String conteudo) {
         Resumo resumoObj = new Resumo(tema, conteudo);
-        if (indice < resumos.length) {
-            resumos[indice] = resumoObj;
-            indice += 1;
-            if (cont < resumos.length) {
-                cont += 1;
+        if (!temResumo(resumoObj.getTema())) {
+            if (indice < resumos.length) {
+                resumos[indice] = resumoObj;
+                indice += 1;
+                if (cont < resumos.length) {
+                    cont += 1;
+                }
+            } else {
+                indice = 0;
+                resumos[indice] = resumoObj;
             }
-        } else {
-            indice = 0;
-            resumos[indice] = resumoObj;
         }
     }
 
@@ -105,6 +109,12 @@ public class RegistroResumos {
         return false;
     }
 
+    /** Metodo que retorna os temas que contenham a
+     * palavra chave de busca, utilizada como parâmetro, em seu conteúdo.
+     *
+     * @param chaveDeBusca
+     * @return Array de Strings que representam o tema de cada resumo encontrado.
+     */
     public String[] busca(String chaveDeBusca) {
         String[] arrayBuscas = new String[cont];
         int contaTemasBuscados = 0;
